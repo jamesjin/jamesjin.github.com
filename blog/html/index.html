@@ -1,0 +1,192 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="关注 Java & Javascript">
+        <meta name="viewport" content="width=device-width">
+        <title>Home &mdash; java&amp;js</title>
+            <link rel="stylesheet" href="_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="_static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="_static/main.css" type="text/css">
+            <link rel="stylesheet" href="_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="_static/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="_static/big.css" type="text/css" /><link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="_static/plugins.js"></script>
+        <script src="_static/main.js"></script>
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Adjusts document height if sidebar is taller
+            var documentwrapper = document.getElementsByTagName("article")[0];
+            var sidebar = document.getElementsByClassName("sidebar")[0];
+
+            if (sidebar.offsetHeight > documentwrapper.offsetHeight)
+            {
+                var mainwrapper = document.getElementsByClassName("main")[0];
+                documentwrapper.style.minHeight = mainwrapper.offsetHeight + "px";
+            }
+
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script></head>
+    <body role="document">
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header role="banner">
+            <hgroup>
+              <h1><a href="#">java&amp;js</a></h1><h2>专注应用开发</h2></hgroup>
+          </header>
+      <nav role="navigation">
+            <ul><li class="quicklink"><div class="rss">
+        <a href="rss.html" title="Subscribe via RSS"><span class="fa fa-lg fa-rss"></span></a>
+    </div></li><li class="main-nav">
+                  <a href="#">Home</a>
+                </li>
+              </ul>
+          </nav><div class="main-container" role="main"><div class="main wrapper body clearfix"><article role="article"><div class="timestamp postmeta">
+            <span>February 26, 2015</span>
+        </div>
+        <div class="section">
+            <h1><a href="2015/02/26/code_review_rules.html">Code Review 的关注点</a></h1>
+<p>代码 Review 时, 通常需要检查以下几个方面:</p>
+<ul class="simple">
+<li>检查输入, 比如前提条件得到满足了吗? 可能出现 NPE 问题吗?</li>
+<li>代码容易理解吗? 命名很重要</li>
+<li>异常得到处理了吗? 拒绝空的 catch 代码块, 或者 e.printStackTrace();</li>
+<li>尽早暴露错误;</li>
+<li>避免 magic constants;</li>
+<li>保持之前的代码风格。类似的功能，要采用类似的解决办法;</li>
+<li>复杂算法逻辑必须有单元测试;</li>
+<li>没有出现编辑器警告</li>
+</ul>
+<p>针对代码所处的环境，比如使用的框架、库等，需要做一些针对性的常见错误检查:</p>
+<ul class="simple">
+<li>java 常见错误</li>
+<li>spring 常见错误</li>
+<li>hibernate 常见错误</li>
+<li>spring mvc 常见错误</li>
+<li>javascript 常见错误</li>
+<li>jquery 常见错误</li>
+<li>angular 常见错误</li>
+</ul>
+
+        </div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by 金 天</span>
+        </div>
+        
+        
+        </div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>February 04, 2015</span>
+        </div>
+        <div class="section">
+            <h1><a href="2015/02/04/transactional_dao.html">可以在DAO层加事务吗？</a></h1>
+<p>大部分Java项目都会采用dao、service、controller这样的分层结构。在这样的项目中常常会发现，很多DAO中声明过的方法都要在service中再声明一遍，而其实现却仅仅是一个简单的dao调用。这样的重复代码，难占到80%以上。重复代码坏处实在多，不了解的可以读下这篇 <em class="xref std std-ref">dry</em> 。</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="nd">@Transactional</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">save</span><span class="o">(</span><span class="n">User</span> <span class="n">u</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">dao</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">u</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>那为什么要重复的声明相同的方法呢？这是因为很多项目都遵循着两个原则：</dt>
+<dd><ul class="first last simple">
+<li>数据库操作都要加事务；</li>
+<li>只在 service 层加事务。</li>
+</ul>
+</dd>
+</dl>
+<p>这样，原本可以直接调用 dao 的 CRUD 类业务，就必须在 service 中再声明一遍。</p>
+<p>那为什么要遵循这两个原则呢？首先</p>
+<p>看以下这段代码：</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">"add a new task {}"</span><span class="o">,</span> <span class="n">task</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>   <span class="c1">// bad, task.toString might be time costing</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">logger</span><span class="o">.</span><span class="na">isDebugEnabled</span><span class="o">())</span> <span class="o">{</span> <span class="c1">// good</span>
+    <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">"add a new task "</span> <span class="o">+</span> <span class="n">task</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+<span class="o">}</span>
+<span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">"add a new task "</span> <span class="o">+</span> <span class="n">task</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span> <span class="c1">// bad, there is a better way</span>
+<span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"add a new task, name: {}"</span><span class="o">,</span> <span class="n">task</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>   <span class="c1">// good</span>
+<span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">"find {} valid users."</span><span class="o">,</span> <span class="n">num</span><span class="o">);</span>                 <span class="c1">// good</span>
+</pre></div>
+</div>
+<p>总的来说，对于采用分层结构的Java应用程序，可以遵循以下原则以减少冗余代码，提高效率。</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>DAO和service类都不用接口；</li>
+<li>每个Model类一个DAO类，而且DAO类加入事务；</li>
+<li>如果一个业务需求涉及多个DAO，或一个DAO的多个方法，则在service中为此创建一个transactional方法。</li>
+<li>需要的时候再加service类，而且也并不是一定要把service类命名成某个model类的service。比如，订单（Trade）和 子订单（SubTrade），没有必要单独声明一个 SubTradeService，而是把子订单的service代码加入TradeService为好。</li>
+</ol>
+</div></blockquote>
+
+        </div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by 金 天</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/java.html">java</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/dao.html">dao</a>, <a href="tags/transaction.html">transaction</a>, <a href="tags/spring.html">spring</a>, <a href="tags/hibernate.html">hibernate</a></span>
+        </div>
+        </div><div class="archive_link">
+        <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
+    </div></article><aside class="sidebar"><section><div class="widget">
+    <h1>Recent Posts</h1>
+    <ul><li>
+            <a href="2015/02/26/code_review_rules.html">Code Review 的关注点</a>
+        </li><li>
+            <a href="2015/02/04/transactional_dao.html">可以在DAO层加事务吗？</a>
+        </li></ul>
+</div>
+</section><section><div class="widget" id="searchbox" role="search">
+    <h1><a href="#searchbox">Search</a></h1>
+    <form action="search.html" method="get">
+        <input type="text" name="q" />
+        <button type="submit"><span class="fa fa-search"></span></button>
+    </form>
+</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 1982, 金 天. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>

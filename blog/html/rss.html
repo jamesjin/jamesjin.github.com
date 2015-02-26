@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>java&js</title>
+        <link>http://jamesjin.github.io/blog/html/</link>
+        <description>专注应用开发</description>
+        <language>en-us</language>
+        <pubDate>Thu, 26 Feb 2015 00:00:00 +0800</pubDate>
+        
+        <item>
+            <link>http://jamesjin.github.io/blog/html/2015/02/26/code_review_rules.html</link>
+            <guid>http://jamesjin.github.io/blog/html/2015/02/26/code_review_rules.html</guid>
+            <title><![CDATA[Code Review 的关注点]]></title>
+            <description><![CDATA[<h1>Code Review 的关注点</h1>
+<p>代码 Review 时, 通常需要检查以下几个方面:</p>
+<ul class="simple">
+<li>检查输入, 比如前提条件得到满足了吗? 可能出现 NPE 问题吗?</li>
+<li>代码容易理解吗? 命名很重要</li>
+<li>异常得到处理了吗? 拒绝空的 catch 代码块, 或者 e.printStackTrace();</li>
+<li>尽早暴露错误;</li>
+<li>避免 magic constants;</li>
+<li>保持之前的代码风格。类似的功能，要采用类似的解决办法;</li>
+<li>复杂算法逻辑必须有单元测试;</li>
+<li>没有出现编辑器警告</li>
+</ul>
+<p>针对代码所处的环境，比如使用的框架、库等，需要做一些针对性的常见错误检查:</p>
+<ul class="simple">
+<li>java 常见错误</li>
+<li>spring 常见错误</li>
+<li>hibernate 常见错误</li>
+<li>spring mvc 常见错误</li>
+<li>javascript 常见错误</li>
+<li>jquery 常见错误</li>
+<li>angular 常见错误</li>
+</ul>
+]]></description>
+             <pubDate>Thu, 26 Feb 2015 00:00:00 +0800</pubDate>
+        </item>
+    
+        <item>
+            <link>http://jamesjin.github.io/blog/html/2015/02/04/transactional_dao.html</link>
+            <guid>http://jamesjin.github.io/blog/html/2015/02/04/transactional_dao.html</guid>
+            <title><![CDATA[可以在DAO层加事务吗？]]></title>
+            <description><![CDATA[<h1>可以在DAO层加事务吗？</h1>
+<p>大部分Java项目都会采用dao、service、controller这样的分层结构。在这样的项目中常常会发现，很多DAO中声明过的方法都要在service中再声明一遍，而其实现却仅仅是一个简单的dao调用。这样的重复代码，难占到80%以上。重复代码坏处实在多，不了解的可以读下这篇 <em class="xref std std-ref">dry</em> 。</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="nd">@Transactional</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">save</span><span class="o">(</span><span class="n">User</span> <span class="n">u</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">dao</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">u</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>那为什么要重复的声明相同的方法呢？这是因为很多项目都遵循着两个原则：</dt>
+<dd><ul class="first last simple">
+<li>数据库操作都要加事务；</li>
+<li>只在 service 层加事务。</li>
+</ul>
+</dd>
+</dl>
+<p>这样，原本可以直接调用 dao 的 CRUD 类业务，就必须在 service 中再声明一遍。</p>
+<p>那为什么要遵循这两个原则呢？首先</p>
+<p>看以下这段代码：</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">"add a new task {}"</span><span class="o">,</span> <span class="n">task</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>   <span class="c1">// bad, task.toString might be time costing</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">logger</span><span class="o">.</span><span class="na">isDebugEnabled</span><span class="o">())</span> <span class="o">{</span> <span class="c1">// good</span>
+    <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">"add a new task "</span> <span class="o">+</span> <span class="n">task</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+<span class="o">}</span>
+<span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">"add a new task "</span> <span class="o">+</span> <span class="n">task</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span> <span class="c1">// bad, there is a better way</span>
+<span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"add a new task, name: {}"</span><span class="o">,</span> <span class="n">task</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>   <span class="c1">// good</span>
+<span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">"find {} valid users."</span><span class="o">,</span> <span class="n">num</span><span class="o">);</span>                 <span class="c1">// good</span>
+</pre></div>
+</div>
+<p>总的来说，对于采用分层结构的Java应用程序，可以遵循以下原则以减少冗余代码，提高效率。</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>DAO和service类都不用接口；</li>
+<li>每个Model类一个DAO类，而且DAO类加入事务；</li>
+<li>如果一个业务需求涉及多个DAO，或一个DAO的多个方法，则在service中为此创建一个transactional方法。</li>
+<li>需要的时候再加service类，而且也并不是一定要把service类命名成某个model类的service。比如，订单（Trade）和 子订单（SubTrade），没有必要单独声明一个 SubTradeService，而是把子订单的service代码加入TradeService为好。</li>
+</ol>
+</div></blockquote>
+]]></description>
+            <category><![CDATA[ java ]]></category>
+             <pubDate>Wed, 04 Feb 2015 00:00:00 +0800</pubDate>
+        </item>
+    
+    </channel>
+</rss>
